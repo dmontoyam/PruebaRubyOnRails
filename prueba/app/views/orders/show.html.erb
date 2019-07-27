@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cliente:</strong>
+  <%= @order.client_name %>
+</p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @order.date %>
+</p>
+
+<p>
+  <strong>Subtotal:</strong>
+  <%= @order.subtotal %>
+</p>
+
+<p>
+  <strong>Total:</strong>
+  <%= @order.total %>
+</p>
+
+<br>
+
+<table class="table table-bordered">
+	<thead>
+		<th>Nombre</th>
+		<th>Cantidad</th>
+		<th>Subtotal</th>
+	</thead>
+
+	<tbody>
+		<% if !@order.order_details.blank? %>
+			<% @order.order_details.each do |od| %>
+				<tr>
+					<td>
+						<%= od.reference_name %>
+					</td>
+
+					<td>
+						<%= od.quantity %>
+					</td>
+
+					<td>
+						<%= od.subtotal %>
+					</td>
+				</tr>
+			<% end %>
+		<% end %>
+	</tbody>
+</table>
+
+<%= link_to 'Editar', edit_order_path(@order), :class=>"btn btn-success" %> |
+<%= link_to 'Regresar', orders_path, :class=>"btn" %>

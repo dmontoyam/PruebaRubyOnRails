@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @reference.name %>
+</p>
+
+<p>
+  <strong>Tamaño:</strong>
+  <%= @reference.size %>
+</p>
+
+<p>
+  <strong>Precio:</strong>
+  <%= @reference.price %>
+</p>
+
+<%= link_to 'Editar', edit_reference_path(@reference), :class=>"btn btn-success" %> |
+<%= link_to 'Regresar', references_path, :class=>"btn" %>

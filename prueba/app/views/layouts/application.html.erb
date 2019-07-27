@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prueba</title>
+    <%= csrf_meta_tags %>
+<%= stylesheet_link_tag "application", controller_name, :media => "all" %>
+<%= stylesheet_link_tag href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
+<%= javascript_include_tag "application", controller_name %>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+      <%= render 'layouts/menu'%>
+      <div class="row">   
+        <div id="page-wrapper" class="content">
+          <% flash.each do |name, msg| %>
+          <div class="alert alert-<%= name.to_s %>
+              alert-dismissable">
+            <a class="close" data-dismiss="alert">×</a>
+            <%= msg %>
+          </div>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  <div class="row">
+    <!-- TODO: Implementar footer -->
+  </div>
+  </body>
+</html>

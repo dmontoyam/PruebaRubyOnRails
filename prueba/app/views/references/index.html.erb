@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Referencias</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Tamaño</th>
+      <th>Precio</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @references.each do |reference| %>
+      <tr>
+        <td><%= link_to reference.name, reference %></td>
+        <td><%= reference.size %></td>
+        <td><%= reference.price %></td>
+        <td><%= link_to 'Editar', edit_reference_path(reference), :class=>"btn btn-primary" %></td>
+        <td><%= link_to 'Eliminar', reference, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nueva Referencia', new_reference_path, :class=>"btn btn-success" %>

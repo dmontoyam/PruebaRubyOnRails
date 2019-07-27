@@ -1,0 +1,22 @@
+class Order < ApplicationRecord
+    
+  has_many :order_details, :dependent=>:destroy
+
+  belongs_to :client
+
+accepts_nested_attributes_for :order_details, :reject_if=> :all_blank, :allow_destroy => true
+
+
+  def client_name
+    
+    client =  ""
+    
+    if !self.client_id.blank?
+      client = Client.find(self.client_id)
+      name = client.name
+    end 
+
+    return name
+  end
+
+end

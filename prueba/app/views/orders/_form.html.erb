@@ -1,0 +1,65 @@
+<%= simple_nested_form_for @order do |form| %>
+
+        <div class="row">
+          <div class="col-md-4">
+            <%= form.input :client_id, :label=>'Cliente', :collection=>Client.all.map { |e| [e.firstName, e.id]  }, :input_html=> { :class=>'form-control' } %>
+            
+          </div>
+
+          <div class="col-md-4">
+            <%= form.input :date, :label=>'Fecha', :input_html=> { :type=>'date', :class=>'datepicker'} %>
+          </div>
+        </div>
+        
+      
+</br>
+  
+
+    <%= form.fields_for :order_details do |order_details_form| %>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Referencia</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+            <td><%= order_details_form.input_field :reference_id, :collection=>Reference.all.map { |e| [e.name, e.id]  }, :class=>'form-control' %></td>
+            
+            <td><%= order_details_form.text_field :quantity, :class=>'form-control' %></td>
+            
+
+            <td><%= order_details_form.text_field :subtotal, :class=>'form-control' %></td>
+            
+            <td><%= order_details_form.link_to_remove "Remover" %></td>
+           
+        </tbody>
+      </table>
+ 
+    <% end %>
+
+    <p><%= form.link_to_add "Agregar nueva referencia", :order_details %></p>
+    <br>
+
+    <div class="row">
+      <div class="form-group">
+        <div class="col-md-4">
+          <%= form.input :subtotal, :as=>"string", :label=>"Subtotal", :input_html=>{ :class=>"form-control"} %>
+        </div><br>
+        <div class="col-md-4">        
+          <%= form.input :total, :as=>"string", :label=>"Total", :input_html=>{ :class=>"form-control"} %>
+        </div>
+      </div>
+    </div>
+
+
+  <div class="actions">
+    <%= form.submit "Guardar", :class=>"btn btn-success" %>
+  </div>
+
+<% end %>

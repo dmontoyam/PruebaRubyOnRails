@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @client.firstName %>
+</p>
+
+<p>
+  <strong>Ciudad:</strong>
+  <%= @client.city %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @client.phone %>
+</p>
+
+<p>
+  <strong>Correo:</strong>
+  <%= @client.email %>
+</p>
+
+<p>
+  <strong>Direccion:</strong>
+  <%= @client.address %>
+</p>
+
+<%= link_to 'Editar', edit_client_path(@client), :class=>"btn btn-success" %> |
+<%= link_to 'Regresar', clients_path, :class=>"btn" %>

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pedidos</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Cliente</th>
+      <th>Fecha</th>
+      <th>Subtotal</th>
+      <th>Total</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= link_to order.client_name, order %></td>
+        <td><%= order.date %></td>
+        <td><%= order.subtotal %></td>
+        <td><%= order.total %></td>
+        
+        <td><%= link_to 'Editar', edit_order_path(order), :class=>"btn btn-primary" %></td>
+        <td><%= link_to 'Eliminar', order, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo pedido', new_order_path, :class=>"btn btn-success" %>
